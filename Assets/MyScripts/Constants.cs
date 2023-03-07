@@ -8,6 +8,7 @@ public class Constants
 
     public const string IS_WALKING = "IsWalking";
     public const string OPEN_CLOSE = "OpenClose";
+    public const string CUT = "Cut";
 
     #endregion Animation
 }

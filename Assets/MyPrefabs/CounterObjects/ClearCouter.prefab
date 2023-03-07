@@ -287,6 +287,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClearCouter
       objectReference: {fileID: 0}
+    - target: {fileID: 6887389433826764744, guid: b668007d291a96645854826994efa685,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.268
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b668007d291a96645854826994efa685, type: 3}
 --- !u!4 &29991041994488089 stripped
@@ -313,8 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1090096dc342d6542937e3e77342d838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _kitchenObjectSO: {fileID: 11400000, guid: 2d1d642f9038c0a4fbe9b18b3d351272, type: 2}
   _counterTopPoint: {fileID: 29991041994488089}
+  _kitchenObjectSO: {fileID: 11400000, guid: 2d1d642f9038c0a4fbe9b18b3d351272, type: 2}
 --- !u!4 &8465460187006070457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3063920762809675880, guid: b668007d291a96645854826994efa685,
