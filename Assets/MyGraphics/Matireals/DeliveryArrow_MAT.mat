@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DeliveryArrow_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: 6c6e6dbbe54ad7040950ebe0ae0f27ce,
+  m_Shader: {fileID: -6465566751694194690, guid: 64c3db236f615c24995cbaecefd20f39,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -21,6 +21,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseColor:
+        m_Texture: {fileID: 2800000, guid: e8b1607e0df77b643a9e90b8036cca0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: e8b1607e0df77b643a9e90b8036cca0d, type: 3}
         m_Scale: {x: 1, y: 1}
