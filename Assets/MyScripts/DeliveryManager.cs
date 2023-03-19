@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DeliveryManager : MonoBehaviour
 {
+    public static DeliveryManager Instance { get; private set; }
+
     [SerializeField] private RecipeListSO _recipeSOList;
     private List<RecipeSO> _watingRecipeSoList;
 
@@ -13,6 +15,7 @@ public class DeliveryManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _watingRecipeSoList = new List<RecipeSO>();
     }
 
@@ -22,12 +25,13 @@ public class DeliveryManager : MonoBehaviour
 
         if (_spawnRecipeTimer > _spawnRecipeTimerMax)
         {
-            _spawnRecipeTimer = _spawnRecipeTimerMax;
+            _spawnRecipeTimer = 0;
 
             if (_watingRecipeSoList.Count < _waitngRecipeMax)
             {
-                RecipeSO watingRecipeSO = _recipeSOList.recipeSOList[Random.Range(0, _recipeSOList.recipeSOList.Count)];
-                _watingRecipeSoList.Add(watingRecipeSO);
+                RecipeSO waitingRecipeSO = _recipeSOList.recipeSOList[Random.Range(0, _recipeSOList.recipeSOList.Count)];
+                Debug.Log(waitingRecipeSO.recipeName);
+                _watingRecipeSoList.Add(waitingRecipeSO);
             }
         }
     }
@@ -46,10 +50,10 @@ public class DeliveryManager : MonoBehaviour
                     //Cycling through all ingredients in the recipe
 
                     bool ingredientFound = false;
-                    foreach (var plateKitchenObjectSo in plateKitchenObject.GetKitchenObjectSOList())
+                    foreach (var plateKitchenObjectSO in plateKitchenObject.GetKitchenObjectSOList())
                     {
                         //Cycling through all ingredients on the plate
-                        if (plateKitchenObject == recipeKitchenObjectSo)
+                        if (plateKitchenObjectSO == recipeKitchenObjectSo)
                         {
                             //Ingredent Dos much
                             ingredientFound = true;
@@ -72,5 +76,8 @@ public class DeliveryManager : MonoBehaviour
                 }
             }
         }
+        //Not Much is found
+        //Player did not deliver a correct recipe
+        Debug.Log("Player did not deliver a correct recipe");
     }
 }
