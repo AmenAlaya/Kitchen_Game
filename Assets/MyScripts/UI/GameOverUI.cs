@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 
-public class GameStartCoundownUI : MonoBehaviour
+public class GameOverUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _countdownText;
+    [SerializeField] private TextMeshProUGUI _recipesDeliveredText;
+
 
     private void Start()
     {
@@ -16,20 +16,18 @@ public class GameStartCoundownUI : MonoBehaviour
 
     private void kitchenGameManager_OnStateChanged(object sender, System.EventArgs e)
     {
-        if(KitcheGameManager.Instance.IsCountDownToStartActive())
+        if (KitcheGameManager.Instance.IsGameOver())
         {
             Show();
+
+            _recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
         }
         else
         {
             Hide();
         }
     }
-
-    private void Update()
-    {
-        _countdownText.text = Mathf.Ceil( KitcheGameManager.Instance.GetCountdownStartTime()).ToString();
-    }
+   
 
     private void Show()
     {
@@ -40,6 +38,4 @@ public class GameStartCoundownUI : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-
 }

@@ -19,11 +19,12 @@ public class KitcheGameManager : MonoBehaviour
     private State _state;
     private float _watingStartTimer = 1f;
     private float _countdownToStartTimer = 3f;
-    private float _gamePlayingtTimer = 10f;
+    private float _gamePlayingtTimer;
+    [SerializeField] private float _gamePlayingtTimerMax = 20f;
 
     private void Awake()
     {
-        Instance= this; 
+        Instance = this;
     }
 
 
@@ -32,22 +33,23 @@ public class KitcheGameManager : MonoBehaviour
         switch (_state)
         {
             case State.WaitingToStart:
-                _watingStartTimer-= Time.deltaTime;
+                _watingStartTimer -= Time.deltaTime;
                 if (_watingStartTimer < 0f)
                 {
                     _state = State.CountdownToStart;
-                    OnStateChanged?.Invoke(this,EventArgs.Empty);
-                }
-                break;
-                case State.CountdownToStart:
-                _countdownToStartTimer-= Time.deltaTime;
-                if(_countdownToStartTimer < 0f)
-                {
-                    _state= State.GamePlaying;
                     OnStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;
-                case State.GamePlaying:
+            case State.CountdownToStart:
+                _countdownToStartTimer -= Time.deltaTime;
+                if (_countdownToStartTimer < 0f)
+                {
+                    _state = State.GamePlaying;
+                    _gamePlayingtTimer = _gamePlayingtTimerMax;
+                    OnStateChanged?.Invoke(this, EventArgs.Empty);
+                }
+                break;
+            case State.GamePlaying:
                 _gamePlayingtTimer -= Time.deltaTime;
                 if (_gamePlayingtTimer < 0f)
                 {
@@ -55,11 +57,9 @@ public class KitcheGameManager : MonoBehaviour
                     OnStateChanged?.Invoke(this, EventArgs.Empty);
                 }
                 break;
-                case State.GameOver:
+            case State.GameOver:
                 break;
         }
-
-        Debug.Log(_state);
 
     }
 
@@ -71,11 +71,21 @@ public class KitcheGameManager : MonoBehaviour
 
     public bool IsCountDownToStartActive()
     {
-        return _state!= State.CountdownToStart;
+        return _state == State.CountdownToStart;
     }
 
     public float GetCountdownStartTime()
     {
         return _countdownToStartTimer;
+    }
+
+    public bool IsGameOver()
+    {
+        return _state == State.GameOver;
+    }
+
+    public float GetGamePlayingTimerNormalized()
+    {
+        return 1 - (_gamePlayingtTimer / _gamePlayingtTimerMax);
     }
 }
