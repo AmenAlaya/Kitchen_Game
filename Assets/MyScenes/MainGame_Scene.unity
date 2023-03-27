@@ -3039,9 +3039,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3439990427554334213, guid: d5c166ba699660d45a4d477227a7e00d,
         type: 3}
+      propertyPath: _buringRecipeSOArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439990427554334213, guid: d5c166ba699660d45a4d477227a7e00d,
+        type: 3}
       propertyPath: _fryingRecipeSOArray.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3439990427554334213, guid: d5c166ba699660d45a4d477227a7e00d,
+        type: 3}
+      propertyPath: _buringRecipeSOArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a879edc2553adb647a6b7cdc4a84c06b,
+        type: 2}
     - target: {fileID: 3439990427554334213, guid: d5c166ba699660d45a4d477227a7e00d,
         type: 3}
       propertyPath: _fryingRecipeSOArray.Array.data[0]

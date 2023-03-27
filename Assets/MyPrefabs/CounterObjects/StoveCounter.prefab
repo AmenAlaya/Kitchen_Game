@@ -372,7 +372,7 @@ MonoBehaviour:
   _fryingRecipeSOArray:
   - {fileID: 11400000, guid: 68bf137922c85a7429c74730aa587435, type: 2}
   _buringRecipeSOArray:
-  - {fileID: 11400000, guid: d883e64bbeda2864096eda68b4f37d3c, type: 2}
+  - {fileID: 11400000, guid: a879edc2553adb647a6b7cdc4a84c06b, type: 2}
 --- !u!4 &1205765928677082985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3063920762809675880, guid: b668007d291a96645854826994efa685,

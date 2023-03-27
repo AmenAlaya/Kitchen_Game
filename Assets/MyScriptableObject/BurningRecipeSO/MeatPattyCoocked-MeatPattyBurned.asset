@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: b5a7922a054767b45b0408a59322fb58, type: 3}
   m_Name: MeatPattyCoocked-MeatPattyBurned
-  m_EditorClassIdentifier: Assembly-CSharp::BuringRecipeSO
+  m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: ab735f988e0645e4e9e789ccf2c7a870, type: 2}
   ouput: {fileID: 11400000, guid: f24acf94810bc984da3fe674d5ac03e0, type: 2}
   BurningTimerMax: 5
