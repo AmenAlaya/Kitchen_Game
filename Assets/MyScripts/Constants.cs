@@ -19,4 +19,9 @@ public class Constants
     public const int PLATE_SPAWNED_AMOUNT_MAX = 4;
 
     #endregion Varibales
+
+    #region Player Prefs
+    public const string PLAYER_PREFS_SOUND_EFFECT_VOLUME = "SoundEffectVolume";
+    public const string PLAYER_PREFS_MUSIC_VOLUME = "MusicVolume";
+    #endregion
 }

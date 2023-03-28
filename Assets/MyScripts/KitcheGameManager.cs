@@ -8,6 +8,8 @@ public class KitcheGameManager : MonoBehaviour
     public static KitcheGameManager Instance { get; private set; }
 
     public event EventHandler OnStateChanged;
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameUnPaused;
     private enum State
     {
         WaitingToStart,
@@ -21,12 +23,22 @@ public class KitcheGameManager : MonoBehaviour
     private float _countdownToStartTimer = 3f;
     private float _gamePlayingtTimer;
     [SerializeField] private float _gamePlayingtTimerMax = 20f;
+    private bool _isGamePaused;
 
     private void Awake()
     {
         Instance = this;
     }
 
+    private void Start()
+    {
+        GameInput.Instantce.OnPauseAction += GameInput_OnPauseAction;
+    }
+
+    private void GameInput_OnPauseAction(object sender, EventArgs e)
+    {
+        TagglePauseGame();
+    }
 
     private void Update()
     {
@@ -87,5 +99,20 @@ public class KitcheGameManager : MonoBehaviour
     public float GetGamePlayingTimerNormalized()
     {
         return 1 - (_gamePlayingtTimer / _gamePlayingtTimerMax);
+    }
+
+    public void TagglePauseGame()
+    {
+        _isGamePaused = !_isGamePaused;
+        if (_isGamePaused)
+        {
+            Time.timeScale = 0f;
+            OnGamePaused?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            OnGameUnPaused?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
