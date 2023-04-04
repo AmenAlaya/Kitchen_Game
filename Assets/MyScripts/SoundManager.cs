@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
         Instance= this;
 
         _volume=PlayerPrefs.GetFloat(Constants.PLAYER_PREFS_SOUND_EFFECT_VOLUME, 1f);
+        
     }
 
 
