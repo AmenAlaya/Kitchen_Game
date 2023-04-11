@@ -23,5 +23,6 @@ public class Constants
     #region Player Prefs
     public const string PLAYER_PREFS_SOUND_EFFECT_VOLUME = "SoundEffectVolume";
     public const string PLAYER_PREFS_MUSIC_VOLUME = "MusicVolume";
+    public const string PLAYER_PREFS_BINDINGS = "InputBindings";
     #endregion
 }
