@@ -23,8 +23,12 @@ public class GameInput : MonoBehaviour
         Move_Right,
         Interact,
         InteractAlternate,
-        Pause
+        Pause,
+        Gamepad_Interact,
+        Gamepad_InteractAlternate,
+        Gamepad_Pause
     }
+
     private PlayerInputAction _playerInputAction;
 
     private void Awake()
@@ -97,6 +101,12 @@ public class GameInput : MonoBehaviour
                 return _playerInputAction.Player.InteractAlternet.bindings[0].ToDisplayString();
             case Binding.Pause:
                 return _playerInputAction.Player.Pause.bindings[0].ToDisplayString();
+            case Binding.Gamepad_Interact:
+                return _playerInputAction.Player.Interact.bindings[1].ToDisplayString();
+            case Binding.Gamepad_InteractAlternate:
+                return _playerInputAction.Player.InteractAlternet.bindings[1].ToDisplayString();
+            case Binding.Gamepad_Pause:
+                return _playerInputAction.Player.Pause.bindings[1].ToDisplayString();
         }
     }
 
@@ -138,6 +148,18 @@ public class GameInput : MonoBehaviour
                 inputAction = _playerInputAction.Player.Pause;
                 buidingIndex = 0;
                 break;
+            case Binding.Gamepad_Interact:
+                inputAction = _playerInputAction.Player.Interact;
+                buidingIndex = 1;
+                break;
+            case Binding.Gamepad_InteractAlternate:
+                inputAction = _playerInputAction.Player.InteractAlternet;
+                buidingIndex = 1;
+                break;
+            case Binding.Gamepad_Pause:
+                inputAction = _playerInputAction.Player.Pause;
+                buidingIndex = 1;
+                break;
         }
 
         inputAction.PerformInteractiveRebinding(buidingIndex)
@@ -146,9 +168,6 @@ public class GameInput : MonoBehaviour
                 callback.Dispose();
                 _playerInputAction.Player.Enable();
                 onActionRebound();
-
-
-
                 PlayerPrefs.SetString(Constants.PLAYER_PREFS_BINDINGS, _playerInputAction.SaveBindingOverridesAsJson());
 
             })

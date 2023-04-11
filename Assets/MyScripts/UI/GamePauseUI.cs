@@ -22,7 +22,8 @@ public class GamePauseUI : MonoBehaviour
 
         optionButton.onClick.AddListener(() =>
         {
-            OptionUI.Instance.Show();
+            Hide();
+            OptionUI.Instance.Show(Show);
         });
 
     }
@@ -43,6 +44,7 @@ public class GamePauseUI : MonoBehaviour
     private void KitchenGameManager_OnGamePaused(object sender, System.EventArgs e)
     {
         Show();
+        resumeButton.Select();
     }
 
     private void Show()
