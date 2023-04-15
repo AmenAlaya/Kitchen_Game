@@ -10,7 +10,7 @@ public class GameInput : MonoBehaviour
     public static GameInput Instantce { get; private set; }
 
 
-
+    public event EventHandler OnPlayerStart;
     public event EventHandler OnInteractAction;
     public event EventHandler OnInteractAlternet;
     public event EventHandler OnPauseAction;
@@ -46,25 +46,31 @@ public class GameInput : MonoBehaviour
         _playerInputAction.Player.Interact.performed += Interact_performed;
         _playerInputAction.Player.InteractAlternet.performed += InteractAlternet_performed;
         _playerInputAction.Player.Pause.performed += Pause_performed;
+        _playerInputAction.Player.StartGame.performed += StartGame_performed;
 
 
     }
+
 
     private void OnDestroy()
     {
         _playerInputAction.Player.Interact.performed -= Interact_performed;
         _playerInputAction.Player.InteractAlternet.performed -= InteractAlternet_performed;
         _playerInputAction.Player.Pause.performed -= Pause_performed;
-
+        _playerInputAction.Player.StartGame.performed -= StartGame_performed;
         _playerInputAction.Dispose();
     }
+    private void StartGame_performed(InputAction.CallbackContext obj)
+    {
+        OnPlayerStart?.Invoke(this, EventArgs.Empty);
+    }
 
-    private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Pause_performed(InputAction.CallbackContext obj)
     {
         OnPauseAction?.Invoke(this, EventArgs.Empty);
     }
 
-    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Interact_performed(InputAction.CallbackContext obj)
     {
         OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
